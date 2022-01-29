@@ -54,16 +54,8 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install -U pip setuptools && \
     pip install -r /tmp/requirements.txt
 
-# Install nvidia/apex
-# https://github.com/NVIDIA/apex
-WORKDIR /tmp
-RUN git clone https://github.com/NVIDIA/apex && \
-    cd apex && \
-    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-WORKDIR /home/${USERNAME}
-
 # Install kaggle command
-COPY kaggle_apikey.json /tmp/kaggle.json
+COPY kaggle.json /tmp/kaggle.json
 RUN mkdir $HOME/.kaggle && \
     cp /tmp/kaggle.json $HOME/.kaggle/kaggle.json && \
     chmod 600 $HOME/.kaggle/kaggle.json
@@ -79,7 +71,7 @@ RUN sudo apt-get update && \
 ENV SHELL /usr/bin/fish
 
 # install your fish plugins
-RUN /usr/bin/fish -c "fisher add oh-my-fish/theme-eclm jethrokuan/z 0rax/fish-bd oh-my-fish/plugin-peco"
+RUN /usr/bin/fish -c "fisher install oh-my-fish/theme-eclm jethrokuan/z 0rax/fish-bd oh-my-fish/plugin-peco"
 
 # config and clean up
 RUN sudo apt-get clean && sudo apt-get autoremove

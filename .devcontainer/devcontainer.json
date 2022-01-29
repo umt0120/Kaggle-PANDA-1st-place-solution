@@ -1,0 +1,15 @@
+{
+    "name": "kaggle_panda",
+    "service": "kaggle_panda",
+    "dockerComposeFile": [
+        "../docker/docker-compose.yml"
+    ],
+    "workspaceFolder": "/home/ubuntu/project",
+    "settings": {
+        "python.pythonPath": "/home/ubuntu/.pyenv/shims/python",
+    },
+    "extensions": [
+        "ms-python.python"
+    ],
+    "remoteUser": "ubuntu"
+}

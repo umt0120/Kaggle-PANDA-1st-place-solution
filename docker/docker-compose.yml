@@ -1,0 +1,13 @@
+version: '2'
+services:
+  kaggle_panda:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - USERNAME=ubuntu
+    ports:
+      - '8888:8888'
+    volumes:
+      - '../:/home/ubuntu/project'
+    tty: true
